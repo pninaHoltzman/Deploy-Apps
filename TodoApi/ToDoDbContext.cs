@@ -3,16 +3,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace TodoApi
 {
-    public partial class ToDoDbContext : DbContext
+    public partial class ToDoDbContext(DbContextOptions<ToDoDbContext> options, IConfiguration configuration) : DbContext(options)
     {
-        private readonly IConfiguration _configuration;
-
-        // הוספת קונסטרוקטור לקבל את הקונפיגורציה
-        public ToDoDbContext(DbContextOptions<ToDoDbContext> options, IConfiguration configuration)
-            : base(options)
-        {
-            _configuration = configuration;
-        }
+        private readonly IConfiguration _configuration = configuration;
 
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<User> Users { get; set; }
