@@ -21,8 +21,8 @@ builder.Services.AddCors(option => option.AddPolicy("AllowAll",//נתינת שם
     p => p.AllowAnyOrigin()//מאפשר כל מקור
     .AllowAnyMethod()//כל מתודה - פונקציה
     .AllowAnyHeader()));//וכל כותרת פונקציה
-
-builder.Services.AddOpenApi();
+// 
+// builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
