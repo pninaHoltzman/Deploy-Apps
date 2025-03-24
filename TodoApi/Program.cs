@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";  
+// אם יש משתנה סביבה בשם "PORT", הוא יקבע את הפורט. אחרת, נשתמש ב-80.
+var port = Environment.GetEnvironmentVariable("PORT") ?? "80";  
+
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(int.Parse(port)); 
+    options.ListenAnyIP(int.Parse(port));  // מאזין על הפורט שהגדרנו
 });
 
 builder.Services.AddDbContext<ToDoDbContext>(options =>
@@ -21,8 +23,7 @@ builder.Services.AddCors(option => option.AddPolicy("AllowAll",//נתינת שם
     p => p.AllowAnyOrigin()//מאפשר כל מקור
     .AllowAnyMethod()//כל מתודה - פונקציה
     .AllowAnyHeader()));//וכל כותרת פונקציה
-// 
-// builder.Services.AddOpenApi();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
