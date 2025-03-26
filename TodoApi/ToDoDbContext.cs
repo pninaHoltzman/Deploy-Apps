@@ -44,7 +44,7 @@ namespace TodoApi
                 entity.HasKey(e => e.Email).HasName("PRIMARY");
                 entity.ToTable("users");
                 entity.Property(e => e.Email).HasMaxLength(100);
-                entity.Property(e => e.Nmae).HasMaxLength(50); // תוקן
+                entity.Property(e => e.Nmae).HasMaxLength(50); // תוקןפה ולא שיניתי כי זה היה שגיעה מה 
                 entity.Property(e => e.Password).HasMaxLength(45);
             });
 
